@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Smart Classroom</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+</head>
+
+<body>
+
+<h1 class="title">AI Smart Classroom</h1>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h3>Participants</h3>
+<ul id="participantsList"></ul>
+
+</div>
+
+
+<div class="main">
+
+<div class="tabs">
+
+<button onclick="showTab('live')">📹 Live Class</button>
+<button onclick="showTab('lecture')">📺 Lecture</button>
+<button onclick="showTab('notes')">📄 AI Notes</button>
+
+</div>
+
+
+<!-- LIVE CLASS -->
+
+<div id="live" class="tabContent">
+
+<div class="video-grid">
+
+<div>
+<h3>Teacher</h3>
+<video id="remoteVideo" autoplay playsinline></video>
+</div>
+
+<div>
+
+<h3>You</h3>
+<video id="localVideo" autoplay playsinline></video>
+
+<div class="controls">
+
+<button onclick="toggleMic()">🎤 Mic</button>
+<button onclick="toggleCamera()">📷 Camera</button>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<h3>Teacher Speech</h3>
+<p id="teacherSpeech"></p>
+
+<h3>Translated Speech</h3>
+<p id="translatedSpeech"></p>
+
+<h3>Select Language</h3>
+
+<select id="speechLanguage">
+    
+<option value="en">🇬🇧 English</option>
+<option value="hi">Hindi</option>
+<option value="kn">Kannada</option>
+<option value="ta">Tamil</option>
+<option value="te">Telugu</option>
+<option value="ml">Malayalam</option>
+
+
+</select>
+
+<button onclick="translateSpeech()">🌐 Translate Speech</button>
+
+</div>
+
+
+<!-- LECTURE -->
+
+<div id="lecture" class="tabContent">
+
+<h2>YouTube Lecture</h2>
+
+<input id="youtubeLink" placeholder="Paste YouTube link">
+
+<button onclick="loadVideo()">Load Video</button>
+<button onclick="generateSubtitles()">Generate Subtitles</button>
+
+<br><br>
+
+<div class="video-container">
+
+<iframe id="youtubePlayer"
+width="720"
+height="405"
+src=""
+allowfullscreen>
+</iframe>
+
+</div>
+
+<br>
+
+<h3>Original Subtitles</h3>
+<p id="originalSubtitle"></p>
+
+<h3>Translated Subtitles</h3>
+<p id="translatedSubtitle"></p>
+
+<br>
+
+<h3>Select Language</h3>
+
+<select id="language">
+
+<option value="en">🇬🇧 English</option>
+<option value="hi">Hindi</option>
+<option value="kn">Kannada</option>
+<option value="ta">Tamil</option>
+<option value="te">Telugu</option>
+<option value="ml">Malayalam</option>
+
+</select>
+
+<button onclick="translateSubtitle()">Translate</button>
+
+<p id="subtitleStatus"></p>
+
+</div>
+
+
+<!-- AI NOTES -->
+
+<div id="notes" class="tabContent">
+
+<h2>Lecture Transcript</h2>
+
+<textarea id="lectureTranscript"></textarea>
+
+<button onclick="generateNotes()">Generate AI Notes</button>
+
+<h2>AI Notes</h2>
+
+<textarea id="notesBox"></textarea>
+
+<button id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
+
+</div>
+
+</div>
+</div>
+
+
+<script src="js/video.js"></script>
+<script src="js/lecture.js"></script>
+<script src="js/notes.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
